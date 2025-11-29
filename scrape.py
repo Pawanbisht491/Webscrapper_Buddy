@@ -25,7 +25,7 @@ def scrape_website(website):
     finally:
         driver.quit()
 
-# SBR_WEBDRIVER_PATH = "SBR_WEBDRIVER"
+# SBR_WEBDRIVER_PATH = os.getenv("SBR_WEBDRIVER")
 # def scrape_website(website):
 #     print("Connecting to Scraping Browser...")
     
