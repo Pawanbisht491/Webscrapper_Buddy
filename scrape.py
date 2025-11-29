@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 import time
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
+load_dotenv()
 import os
 
 from selenium.webdriver import Remote, ChromeOptions
@@ -11,7 +12,7 @@ from selenium.webdriver.chromium.remote_connection import ChromiumRemoteConnecti
 def scrape_website(website):
     print("Launching chrome browser...")
 
-    chrome_driver_path = "D:\Webscrapper_Buddy\chromedriver.exe"
+    chrome_driver_path = os.getenv("CHROMEDRIVER_PATH")
     options = webdriver.ChromeOptions()
     driver = webdriver.Chrome(service=Service(chrome_driver_path), options=options)
     
@@ -24,11 +25,11 @@ def scrape_website(website):
     finally:
         driver.quit()
 
-# SBR_WEBDRIVER = "https://brd-customer-hl_bbc1e100-zone-scraping_browser1:u035iqw41hxu@brd.superproxy.io:9515"
+# SBR_WEBDRIVER_PATH = "SBR_WEBDRIVER"
 # def scrape_website(website):
 #     print("Connecting to Scraping Browser...")
     
-#     sbr_connection = ChromiumRemoteConnection(SBR_WEBDRIVER, "goog", "chrome")
+#     sbr_connection = ChromiumRemoteConnection(SBR_WEBDRIVER_PATH, "goog", "chrome")
 #     with Remote(sbr_connection, options=ChromeOptions()) as driver:
 #         driver.get(website)
 #         print("Waiting captcha to solve...")
